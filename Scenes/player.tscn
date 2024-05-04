@@ -187,7 +187,7 @@ script = ExtResource("1_nrssr")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_ep6cd")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
 z_index = 6
 position = Vector2(9.30944, 8.17837)
 rotation = 2.555
@@ -208,3 +208,8 @@ animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.543283
 flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 6
+position = Vector2(2.67029e-05, -5.99998)
+shape = SubResource("CircleShape2D_8m2fk")
