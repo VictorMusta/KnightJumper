@@ -1,7 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8f7hobt5sttf"]
+[gd_scene load_steps=29 format=3 uid="uid://c8f7hobt5sttf"]
 
 [ext_resource type="Texture2D" uid="uid://xwj6lwpgfwog" path="res://Assets/brackeys_platformer_assets/sprites/knight.png" id="1_gp1ia"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_nrssr"]
+[ext_resource type="PackedScene" uid="uid://dq1u8vi5bw5ln" path="res://Scenes/sword.tscn" id="2_8u545"]
+[ext_resource type="PackedScene" uid="uid://j6paided2drv" path="res://Scenes/hurt_box.tscn" id="2_ep6cd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m2fk"]
+radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_atbw7"]
 atlas = ExtResource("1_gp1ia")
@@ -175,20 +180,31 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8m2fk"]
-radius = 6.0
-
 [node name="Player" type="CharacterBody2D"]
+z_index = 5
 collision_layer = 2
 script = ExtResource("1_nrssr")
 
+[node name="HurtBox" parent="." instance=ExtResource("2_ep6cd")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+z_index = 6
+position = Vector2(9.30944, 8.17837)
+rotation = 2.555
+scale = Vector2(0.111157, 0.153887)
+skew = -0.0367793
+shape = SubResource("CircleShape2D_8m2fk")
+
+[node name="Sword" parent="." instance=ExtResource("2_8u545")]
+z_index = 5
+position = Vector2(0, -15)
+scale = Vector2(0.285, 0.285)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_maj1a")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.543283
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_8m2fk")
+flip_h = true

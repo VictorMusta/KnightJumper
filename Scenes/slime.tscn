@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://txi4ry3wddqg"]
+[gd_scene load_steps=14 format=3 uid="uid://txi4ry3wddqg"]
 
 [ext_resource type="Texture2D" uid="uid://dyyxwtigdrst3" path="res://Assets/brackeys_platformer_assets/sprites/slime_purple.png" id="1_2x56d"]
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_jv86i"]
 [ext_resource type="PackedScene" uid="uid://e736joxi61ho" path="res://Scenes/kill_zone.tscn" id="3_cbd2d"]
+[ext_resource type="PackedScene" uid="uid://j6paided2drv" path="res://Scenes/hurt_box.tscn" id="3_s1787"]
+[ext_resource type="PackedScene" uid="uid://cs7nckhkce4wb" path="res://Scenes/hit_box.tscn" id="5_yncki"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xur7"]
 atlas = ExtResource("1_2x56d")
@@ -19,6 +21,14 @@ region = Rect2(48, 24, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r835b"]
 atlas = ExtResource("1_2x56d")
 region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpy23"]
+atlas = ExtResource("1_2x56d")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6k6y"]
+atlas = ExtResource("1_2x56d")
+region = Rect2(72, 48, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3k8t1"]
 animations = [{
@@ -38,12 +48,24 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpy23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6k6y")
+}],
+"loop": true,
+"name": &"take_damage",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njbdu"]
 size = Vector2(8, 10)
 
 [node name="Slime" type="Node2D"]
+position = Vector2(0, -11)
 script = ExtResource("1_jv86i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,8 +75,22 @@ autoplay = "default"
 [node name="KillZone" parent="." instance=ExtResource("3_cbd2d")]
 position = Vector2(0, 6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+[node name="KillZoneArea" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("RectangleShape2D_njbdu")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_s1787")]
+position = Vector2(0, 0)
+rotation = 0.0
+
+[node name="HurtBoxArea" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0.23817, 0.835626)
+scale = Vector2(0.122739, 0.144818)
+skew = -0.277657
+shape = SubResource("RectangleShape2D_njbdu")
+
+[node name="HitBox" parent="HurtBox" instance=ExtResource("5_yncki")]
+scale = Vector2(0.122739, 0.144818)
+skew = -0.277657
 
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 position = Vector2(0, 6)
