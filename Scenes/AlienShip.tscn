@@ -104,3 +104,9 @@ libraries = {
 "": SubResource("AnimationLibrary_583wd")
 }
 autoplay = "FlyingPattern"
+
+[node name="HitTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="HitTimer" to="." method="display_damage_animation_once"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

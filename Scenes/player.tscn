@@ -209,7 +209,7 @@ autoplay = "Idle"
 frame_progress = 0.543283
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerShape" type="CollisionShape2D" parent="."]
 z_index = 6
 position = Vector2(2.67029e-05, -5.99998)
 shape = SubResource("CircleShape2D_8m2fk")
