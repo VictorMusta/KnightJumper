@@ -23,7 +23,7 @@ func _process(delta):
 	pass
 
 func take_damage(damage:int):
-	print("i took damage!")
+	print("Slime took damage")
 	life -= damage
 	if(life <=0):
 		slime.queue_free()

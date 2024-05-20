@@ -72,12 +72,6 @@ sprite_frames = SubResource("SpriteFrames_3k8t1")
 animation = &"take_damage"
 autoplay = "default"
 
-[node name="KillZone" parent="." instance=ExtResource("3_cbd2d")]
-position = Vector2(0, 6)
-
-[node name="KillZoneArea" type="CollisionShape2D" parent="KillZone"]
-shape = SubResource("RectangleShape2D_njbdu")
-
 [node name="HurtBox" parent="." instance=ExtResource("3_s1787")]
 position = Vector2(0, 0)
 rotation = 0.0
@@ -95,3 +89,11 @@ target_position = Vector2(8, 0)
 [node name="RayCast2DLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 6)
 target_position = Vector2(-8, 0)
+
+[node name="KillZone" parent="." instance=ExtResource("3_cbd2d")]
+position = Vector2(262.188, -35.4328)
+
+[node name="HurtBoxAreas" type="CollisionShape2D" parent="KillZone"]
+position = Vector2(-262.188, 41.4328)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_njbdu")

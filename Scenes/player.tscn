@@ -186,10 +186,11 @@ collision_layer = 2
 script = ExtResource("1_nrssr")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_ep6cd")]
+position = Vector2(0, 0)
 
 [node name="HurtBoxShape" type="CollisionShape2D" parent="HurtBox"]
 z_index = 6
-position = Vector2(9.30944, 8.17837)
+position = Vector2(0.539016, 0.749656)
 rotation = 2.555
 scale = Vector2(0.111157, 0.153887)
 skew = -0.0367793
@@ -213,3 +214,15 @@ flip_h = true
 z_index = 6
 position = Vector2(2.67029e-05, -5.99998)
 shape = SubResource("CircleShape2D_8m2fk")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_die_timer_timeout"]

@@ -120,7 +120,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xk3a0"]
-size = Vector2(217.499, 93.7129)
+size = Vector2(217.499, 136.559)
 
 [node name="Sword" type="Node2D"]
 position = Vector2(7, -53)
@@ -151,7 +151,7 @@ libraries = {
 [node name="HitBox" parent="." instance=ExtResource("4_jqx0a")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-65.7903, -6.49644)
+position = Vector2(-48.6603, 6.58118)
 rotation = 2.19848
 shape = SubResource("RectangleShape2D_xk3a0")
 disabled = true
