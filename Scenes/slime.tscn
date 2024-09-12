@@ -95,5 +95,4 @@ position = Vector2(262.188, -35.4328)
 
 [node name="HurtBoxAreas" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(-262.188, 41.4328)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_njbdu")

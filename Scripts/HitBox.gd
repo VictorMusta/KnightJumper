@@ -10,4 +10,3 @@ func _init():
 
 func _on_body_entered(body):
 	print("You killed someone!")
-
